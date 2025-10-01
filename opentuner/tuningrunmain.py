@@ -87,6 +87,8 @@ class TuningRunMain:
         objective = measurement_interface.objective()
 
         if not args.database:
+            if not os.path.isdir('opentuner.db'):
+                os.mkdir('opentuner.db')
             args.database = 'sqlite:///' + os.path.join('opentuner.db', socket.gethostname() + '.db')
         if '://' not in args.database:
             args.database = 'sqlite:///' + args.database
