@@ -18,9 +18,9 @@ class PatternSearch(technique.SequentialSearchTechnique):
         if driver.best_result is None:
             # start at a random position
             center = driver.get_configuration(manipulator.random())
+            self.yield_nonblocking(center)
         else:
             center = driver.best_result.configuration
-            self.yield_nonblocking(center)
 
         while True:
             points = list()
